@@ -1,37 +1,54 @@
+{% set pkgver='2.9.10' %}
+{% set pkgrel='3' %}
+{% set _realname='libxml2' %}
+{% set pkgname='m2w64-' ~ _realname %}
+
 package:
-  name: m2w64-libxml2
-  version: 2.9.3
+  name: {{ pkgname }}
+  version: {{ pkgver }}
 source:
-  url: http://msys2-sources.continuum.io/msys2-sources/mingw/sources/mingw-w64-libxml2-2.9.3-2.src.tar.gz
-  md5: 77805e10593a41f2de3b886a3b9423d6
+  - url: http://xmlsoft.org/sources/${_realname}-${pkgver}.tar.gz
+    fn: {{ pkgname }}-v{{ pkgver }.tar.gz
+    sha256: aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f
+    folder: {{ _realname }}-{{ pkgver }}
+  patches:
+    - 0015-fix-unused-parameters-warning.all.patch
+    - 0016-WARNING-to-be-fixed.all.patch
+    - 0020-fix-warnings.patch
+    - 0023-fix-sitedir-detection.mingw.patch
+    - 0026-mingw-relocate.patch
+    - libxml2-2.9.9-python.patch
+  - path: ./PKGBUILD
+  - path: ./msys2-build-via-PKGBUILD.sh
+
 build:
-  number: 3
+  number: {{ pkgrel }}
 requirements:
+  build:
+    - m2-filesystem
+    - m2-sed
+    - m2-grep
+    - m2-findutils
+    - m2-autoconf
+    - m2-automake-wrapper
+    - m2-make
+    - m2-libtool
+    - m2w64-toolchain
   run:
-  - msys2-conda-epoch >=20160418
-  - m2w64-gcc-libs
-  - m2w64-gettext
-  - m2w64-xz
-  - m2w64-zlib
+    - msys2-conda-epoch >=20160418
+    - m2w64-gcc-libs
 about:
-  home: http://www.xmlsoft.org/
+  home: http://xmlsoft.org/
   license: MIT
-  summary: XML parsing library, version 2 (mingw-w64)
+  summary: The XML C parser and toolkit of Gnome
+  description:
+     Though libxml2 is written in C a variety of language
+     bindings make it available in other environments.
+  doc_url: http://xmlsoft.org/html/index.html
+  doc_source_url: https://github.com/GNOME/libxml2/blob/master/doc/index.html
+  dev_url: https://git.gnome.org/browse/libxml2/
+
 extra:
-  msys2-binaries:
-    win-32:
-      srcpkg: mingw32/mingw-w64-i686-libxml2
-      url: http://msys2-sources.continuum.io/msys2-sources/mingw/i686/mingw-w64-i686-libxml2-2.9.3-2-any.pkg.tar.xz
-      md5: 7ed8f48ae2c23de289a242d6794c7cda
-      mv-srcs:
-      - mingw32
-      mv-dsts:
-      - Library/mingw-w64
-    win-64:
-      srcpkg: mingw64/mingw-w64-x86_64-libxml2
-      url: http://msys2-sources.continuum.io/msys2-sources/mingw/x86_64/mingw-w64-x86_64-libxml2-2.9.3-2-any.pkg.tar.xz
-      md5: a0ca811b3fa42316e3b92bd00af186df
-      mv-srcs:
-      - mingw64
-      mv-dsts:
-      - Library/mingw-w64
+  recipe-maintainers:
+    - katietz
+ 
