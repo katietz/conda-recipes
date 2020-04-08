@@ -8,7 +8,7 @@ package:
   version: {{ pkgver }}
 source:
   - url: http://xmlsoft.org/sources/${_realname}-${pkgver}.tar.gz
-    fn: {{ pkgname }}-v{{ pkgver }.tar.gz
+    fn: {{ pkgname }}-{{ pkgver }.tar.gz
     sha256: aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f
     folder: {{ _realname }}-{{ pkgver }}
   patches:
