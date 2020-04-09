@@ -7,17 +7,17 @@ package:
   name: {{ pkgname }}
   version: {{ pkgver }}
 source:
-  - url: http://xmlsoft.org/sources/${_realname}-${pkgver}.tar.gz
+  - url: http://xmlsoft.org/sources/{{_realname}}-{{pkgver}}.tar.gz
     fn: {{ pkgname }}-{{ pkgver }}.tar.gz
     sha256: aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f
     folder: {{ _realname }}-{{ pkgver }}
-  patches:
-    - 0015-fix-unused-parameters-warning.all.patch
-    - 0016-WARNING-to-be-fixed.all.patch
-    - 0020-fix-warnings.patch
-    - 0023-fix-sitedir-detection.mingw.patch
-    - 0026-mingw-relocate.patch
-    - libxml2-2.9.9-python.patch
+    patches:
+      - 0015-fix-unused-parameters-warning.all.patch
+      - 0016-WARNING-to-be-fixed.all.patch
+      - 0020-fix-warnings.patch
+      - 0023-fix-sitedir-detection.mingw.patch
+      - 0026-mingw-relocate.patch
+      - libxml2-2.9.9-python.patch
   - path: ./PKGBUILD
   - path: ./msys2-build-via-PKGBUILD.sh
 
@@ -41,7 +41,7 @@ about:
   home: http://xmlsoft.org/
   license: MIT
   summary: The XML C parser and toolkit of Gnome
-  description:
+  description: |
      Though libxml2 is written in C a variety of language
      bindings make it available in other environments.
   doc_url: http://xmlsoft.org/html/index.html
