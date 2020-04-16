@@ -26,6 +26,7 @@ build:
 requirements:
   build:
     - m2-filesystem
+    - m2-pkg-config
     - m2-sed
     - m2-grep
     - m2-findutils
@@ -34,6 +35,7 @@ requirements:
     - m2-make
     - m2-libtool
     - m2w64-toolchain
+    - python
   run:
     - msys2-conda-epoch >=20160418
     - m2w64-gcc-libs

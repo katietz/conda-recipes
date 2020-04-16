@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export CFLAGS="-I${PREFIX}/include ${CFLAGS}"
+
 export MINGW_PREFIX="/Library/mingw-w64"
 if [[ ${ARCH} == 32 ]]; then
   export CARCH=i686
@@ -15,8 +17,8 @@ export pkgver=${PKG_VERSION}
 
 . ./PKGBUILD
 # Breaks, PKG_CONFIG issues leading to CPPUNIT issues.
-# pushd ${srcdir}/JAGS-${PKG_VERSION}
-#   autoreconf -vfi
-# popd
+pushd ${srcdir}/libxml2-${PKG_VERSION}
+  autoreconf -vfi
+popd
 build || exit 1
 package || exit 1
