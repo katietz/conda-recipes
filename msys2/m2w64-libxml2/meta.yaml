@@ -24,6 +24,9 @@ source:
 
 build:
   number: {{ pkgrel }}
+  ignore_run_exports:
+    - m2w64-gcc-libs
+
 requirements:
   build:
     - m2-filesystem
