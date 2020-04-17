@@ -19,11 +19,6 @@ FOR /F "delims=" %%i IN ('cygpath.exe -u "%STDLIB_DIR%"') DO set "STDLIB_DIR=%%i
 FOR /F "delims=" %%i IN ('cygpath.exe -u "%LIBRARY_INC%"') DO set "LIBRARY_INC=%%i"
 FOR /F "delims=" %%i IN ('cygpath.exe -u "%LIBRARY_BIN%"') DO set "LIBRARY_BIN=%%i"
 FOR /F "delims=" %%i IN ('cygpath.exe -u "%LIBRARY_LIB%"') DO set "LIBRARY_LIB=%%i"
-FOR /F "delims=" %%i IN ('cygpath.exe -u "%PIP_CACHE_DIR%"') DO set "PIP_CACHE_DIR=%%i"
-FOR /F "delims=" %%i IN ('cygpath.exe -u "%CONDA_EXE%"') DO set "CONDA_EXE=%%i"
-FOR /F "delims=" %%i IN ('cygpath.exe -u "%CONDA_PREFIX_1%"') DO set "CONDA_PREFIX_1=%%i"
-FOR /F "delims=" %%i IN ('cygpath.exe -u "%CONDA_PYTHON_EXE%"') DO set "CONDA_PYTHON_EXE=%%i"
-FOR /F "delims=" %%i IN ('cygpath.exe -u "%CONDA_ROOT%"') DO set "CONDA_ROOT=%%i"
 
 set MSYSTEM=MINGW%ARCH%
 set MSYS2_PATH_TYPE=inherit

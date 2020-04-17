@@ -18,6 +18,7 @@ source:
       - 0023-fix-sitedir-detection.mingw.patch
       - 0026-mingw-relocate.patch
       - libxml2-2.9.9-python.patch
+      - python_cfg.patch
   - path: ./PKGBUILD
   - path: ./msys2-build-via-PKGBUILD.sh
 
@@ -36,9 +37,16 @@ requirements:
     - m2-libtool
     - m2w64-toolchain
     - python
+    - m2w64-gettext
+    - m2w64-xz
+    - m2w64-zlib
+    - m2w64-libiconv
   run:
     - msys2-conda-epoch >=20160418
     - m2w64-gcc-libs
+    - m2w64-xz
+    - m2w64-zlib
+    - m2w64-libiconv
 about:
   home: http://xmlsoft.org/
   license: MIT

@@ -43,7 +43,7 @@ sha256sums=('aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f'
 apply_patch_with_msg() {
   for _fname in "$@"
   do
-    msg2 "Applying ${_fname}"
+    # msg2 "Applying ${_fname}"
     patch -Nbp1 -i "${srcdir}"/${_fname}
   done
 }
@@ -79,7 +79,7 @@ prepare() {
 
 build() {
   # Static build
-  msg2 "Building static for ${CARCH}"
+  # msg2 "Building static for ${CARCH}"
   mkdir -p ${srcdir}/build-static-${CARCH} && cd ${srcdir}/build-static-${CARCH}
   ../${_realname}-${pkgver}/configure \
     --prefix=${MINGW_PREFIX} \
@@ -95,7 +95,7 @@ build() {
   make
 
   # Shared build
-  msg2 "Building shared with Python ext ${CARCH}"
+  # msg2 "Building shared with Python ext ${CARCH}"
   [[ -d "${srcdir}"/build-shared-${CARCH} ]] && rm -rf "${srcdir}"/build-shared-${CARCH}
   mkdir -p ${srcdir}/build-shared-${CARCH} && cd ${srcdir}/build-shared-${CARCH}
   ../${_realname}-${pkgver}/configure \
